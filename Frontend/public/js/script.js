@@ -27,7 +27,7 @@ function submitLogin() {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Application-Key': ''
+            'Application-Key': 'TU6b385dc1f8327e133ed355505488df04cd80b11ff6273eb291fa94ad1a05c456116ca973efcb839f730143f2cb931d4b'
         },
         body: 
         JSON.stringify({ 
@@ -39,7 +39,13 @@ function submitLogin() {
     .then(data => {
         if (data.status) {
             /************testing**************/
-            
+            document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;     
+            document.getElementById('message').innerText = 
+            `Username: ${data.username}\n` +
+            `Name: ${data.displayname_en}\n` +
+            `Role: ${data.type}\n` +
+            `Faculty: ${data.faculty}, ${data.department}\n` +
+            `Contact: ${data.email}`;
             /*********************************/
             addToDB(data)
             window.location.href = 'main.html';
@@ -50,15 +56,6 @@ function submitLogin() {
     })
     .catch(error => console.error('Error:', error));
 }
-/*
-function backtoLogin() {
-    document.getElementById('form').style.display = 'block';
-    document.getElementById('result').style.display = 'none';
-    document.getElementById('username').value = '';
-    document.getElementById('password').value = '';
-    document.getElementById('message').innerText = '';
-}
-    */
 
 function addToDB(user) {
 //to save user's info in to database

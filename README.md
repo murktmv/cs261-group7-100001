@@ -1,10 +1,12 @@
 # Repository for team project in CS261 course
 
 This repository has one branche: *'main' (Default)*  
->This branch will be the place to keep up to date with the latest progress of the project. As of this writing, the project is still in development. The completed work includes:
+
+Main branch will be the place to keep up to date with the latest progress of the project. As of this writing, the project is still in development.  
+The completed work includes:
 - Login system that calls the TU API to verify identity (Frondend code with TU API)
 
-## This is 'master' branch
+## This is 'main' branch
 This branch contains two folders:
 >
 >- **Frontend/**
