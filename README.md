@@ -44,4 +44,7 @@ The last two lines of the **DockerContainer_NodeJS.dockerfile** file contain the
 
 ***Note that:*** these commands only work properly if you build the docker file in the same location as the `frontend` and `server-setup` folders, so use the code with caution.  
 
+.
+.
+.
 *The project will be updated continuously...*
