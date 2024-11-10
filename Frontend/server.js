@@ -1,5 +1,4 @@
-const express = require('express');
-const path = require('path');
+require('dotenv').config();
 
 const app = express();
 
@@ -23,7 +22,7 @@ app.post('/auth', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Application-Key': 'TU6b385dc1f8327e133ed355505488df04cd80b11ff6273eb291fa94ad1a05c456116ca973efcb839f730143f2cb931d4b'
+                'Application-Key': process.env.APPLICATION_KEY
             },
             body: JSON.stringify({
                 UserName,
@@ -31,6 +30,9 @@ app.post('/auth', async (req, res) => {
             })
         });
 
+        if (!response.ok) {
+            return res.status(response.status).json({ error: 'Authentication failed' });
+        }
 
         const data = await response.json();
         res.status(200).json(data);
@@ -39,7 +41,6 @@ app.post('/auth', async (req, res) => {
         console.error('Error:', error);
         res.status(500).json({ error: 'Server error' });
     }
-
 });
 
 const PORT = process.env.PORT || 3000;
