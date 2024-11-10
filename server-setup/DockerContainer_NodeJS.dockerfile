@@ -32,6 +32,6 @@ CMD ["node", "server.js"]
 # The container will just run a shell unless otherwise specified
 # CMD ["sh"]
 
-#Commands for build image and run node.js container from image
+# Commands for build image and run node.js container from image
 #docker build -f server-setup/DockerContainer_NodeJS.dockerfile -t node-js-image .
 #docker run -d --name node-js --network mynetwork -p 3000:3000 node-js-image

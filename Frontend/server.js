@@ -1,3 +1,6 @@
+const express = require('express');
+const path = require('path');
+
 require('dotenv').config();
 
 const app = express();
@@ -22,7 +25,7 @@ app.post('/auth', async (req, res) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Application-Key': process.env.APPLICATION_KEY
+                'Application-Key': 'TU6b385dc1f8327e133ed355505488df04cd80b11ff6273eb291fa94ad1a05c456116ca973efcb839f730143f2cb931d4b'
             },
             body: JSON.stringify({
                 UserName,
