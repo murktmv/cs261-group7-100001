@@ -38,26 +38,30 @@ function submitLogin() {
     .then(response => response.json())
     .then(data => {
         if (data.status) {
-            /************testing**************/
-            document.getElementById('status').innerText = `Login successful!\nHello and Welcome,\n`;     
-            document.getElementById('message').innerText = 
-            `Username: ${data.username}\n` +
-            `Name: ${data.displayname_en}\n` +
-            `Role: ${data.type}\n` +
-            `Faculty: ${data.faculty}, ${data.department}\n` +
-            `Contact: ${data.email}`;
-            /*********************************/
-            addToDB(data)
-            window.location.href = 'main.html';
+            const statusDiv = document.getElementById('status');
+            const messageDiv = document.getElementById('message');
+            
+            if (statusDiv) {
+                statusDiv.innerText = `Login successful!\nHello and Welcome,\n`;
+            }
+            if (messageDiv) {
+                messageDiv.innerText = 
+                    `Username: ${data.username}\n` +
+                    `Name: ${data.displayname_en}\n` +
+                    `Role: ${data.type}\n` +
+                    `Faculty: ${data.faculty}, ${data.department}\n` +
+                    `Contact: ${data.email}`;
+            }
+            
+            addToDB(data); 
+            window.location.href = 'main.html'; 
         } else {
-            checkDiv.innerText = 'Incorrect username or password\nPlease try again!';
-            return;
+            if (checkDiv) checkDiv.innerText = 'Incorrect username or password. Please try again!';
         }
     })
     .catch(error => console.error('Error:', error));
 }
 
 function addToDB(user) {
-//to save user's info in to database
-//should accessible by profile page
+    localStorage.setItem('user', JSON.stringify(user)); 
 }
