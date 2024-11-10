@@ -18,6 +18,7 @@ nav{
     align-items: center;
     background-color: #D41616;
     overflow: hidden;
+    box-shadow: 0px 2px 4px #00000050;
 }
 nav img{
     width: 300px;
@@ -25,14 +26,16 @@ nav img{
     background-color: #D9D9D9;
     margin: 0;
     padding: 15px;
+    padding-top: 20px;
+
 }
 nav ul{
-    margin-right: 20px;
+    margin-right: 0px;
 }
 nav ul li{
     list-style: none;
     display: inline-block;
-    padding: 8px 50px;
+    padding: 35px 10px 35px 10px;
     position: relative;
 }
 nav ul li a{
@@ -40,6 +43,41 @@ nav ul li a{
     text-decoration: none;
     font-size: 15px;
     font-weight: 400;
+}
+nav ul li:hover {
+    background-color: #9a1010;
+}
+/*responsive navbar*/
+@media (max-width: 750px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+    }
+
+    nav img {
+        display: block;
+        width: 255px;
+        height: auto;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    nav ul li {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 10px;
+        margin-bottom: 5px;
+    }
 }
 
 /*-------- Universal Element ---------*/
@@ -123,9 +161,9 @@ div#status-text:nth-child(1){
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    height: auto;
     width: 55%;
-    padding: 0 15px 0 15px;
+    padding: 10px 15px 10px 20px;
     background-color: #D9D9D9;
     border-radius: 10px;
     margin-bottom: 25px;
@@ -133,25 +171,35 @@ div#status-text:nth-child(1){
 .req-menu h4{
     font-size: 18px;
     font-weight: 400;
+    padding: auto;
 }
 .create-req{
-    width: 20%;
-    height: 70%;
+    width: fit-content;
+    height: auto;
+    margin-right: 5px;
+    padding: 5px;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #315D36;
+    background-color: #37673d;
     border-radius: 5px;
     cursor: pointer;
 }
 .create-req h4 {
-    padding: 0 0 0 10px;
+    padding: 0px 5px 0px 5px;
     font-size: 15px;
     font-weight: 300;
 }
 .create-req .bi {
+    padding: 0px 5px 0px 5px;
     font-size: 20px;
+    padding: 5px;
+}
+
+.create-req:hover {
+    background-color: #235428;
+    box-shadow: 0px 0px 5px #f2074293;
 }
 /*--------- สถานะคำร้อง ---------*/
 h4.req-status-date{

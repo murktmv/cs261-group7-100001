@@ -1,5 +1,5 @@
 # Repository for team project in CS261 course
-
+# Group 7 Section 100001
 This repository has one branche: *'main' (Default)*  
 
 Main branch will be the place to keep up to date with the latest progress of the project. As of this writing, the project is still in development.  
