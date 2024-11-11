@@ -23,7 +23,7 @@ function submitLogin() {
         return;
     }
 
-    fetch('/auth', {
+    fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,13 +31,11 @@ function submitLogin() {
             //^^^token of team project's channel//
             //for easier testing//
         },
-        body: JSON.stringify({ 
-            UserName, 
-            PassWord 
-        })
+        body: JSON.stringify({ "UserName":UserName, "PassWord":PassWord })
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.status) {
             addToDB(data); 
             window.location.href = 'main.html'; 
