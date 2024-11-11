@@ -23,34 +23,20 @@ function submitLogin() {
         return;
     }
 
-    fetch('/auth', {
+    fetch('https://restapi.tu.ac.th/api/v1/auth/Ad/verify', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Application-Key': 'TU6b385dc1f8327e133ed355505488df04cd80b11ff6273eb291fa94ad1a05c456116ca973efcb839f730143f2cb931d4b'
+            //^^^token of team project's channel//
+            //for easier testing//
         },
-        body: JSON.stringify({ 
-            UserName, 
-            PassWord 
-        })
+        body: JSON.stringify({ "UserName":UserName, "PassWord":PassWord })
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.status) {
-            const statusDiv = document.getElementById('status');
-            const messageDiv = document.getElementById('message');
-            
-            if (statusDiv) {
-                statusDiv.innerText = `Login successful!\nHello and Welcome,\n`;
-            }
-            if (messageDiv) {
-                messageDiv.innerText = 
-                    `Username: ${data.username}\n` +
-                    `Name: ${data.displayname_en}\n` +
-                    `Role: ${data.type}\n` +
-                    `Faculty: ${data.faculty}, ${data.department}\n` +
-                    `Contact: ${data.email}`;
-            }
-            
             addToDB(data); 
             window.location.href = 'main.html'; 
         } else {
@@ -81,4 +67,3 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'login.html';
     }
 });
-
