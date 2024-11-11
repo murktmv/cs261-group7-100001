@@ -58,12 +58,26 @@ function logout() {
 
 // ตรวจสอบการเข้าสู่ระบบเมื่อโหลดหน้า main.html
 document.addEventListener('DOMContentLoaded', () => {
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
     const currentPath = window.location.pathname; // รับ path ของหน้าปัจจุบัน เช่น "/login.html"
 
     // ตรวจสอบว่าผู้ใช้เข้าสู่ระบบหรือยัง และตรวจสอบว่าไม่ใช่หน้า login.html
     if (!user && !currentPath.includes('login.html')) {
         // ถ้าไม่มีข้อมูลผู้ใช้ใน localStorage นำผู้ใช้ไปยังหน้า login
         window.location.href = 'login.html';
+    }
+
+    if (currentPath.includes('profile.html')) {
+        //TODO: Switch to internal DB for more info
+        console.log(user);
+        const thname = user.displayname_th.split(" ");
+        const enname = user.displayname_en.split(" ");
+        document.getElementById("info-box-thname").innerText = thname[0];
+        document.getElementById("info-box-thlname").innerText = thname[1];
+        document.getElementById("info-box-enname").innerText = enname[0];
+        document.getElementById("info-box-enlname").innerText = enname[1];
+        document.getElementById("info-box-faculty").innerText = user.faculty;
+        document.getElementById("info-box-major").innerText = user.department;
+        document.getElementById("info-box-id").innerText = user.username;
     }
 });
