@@ -7,30 +7,23 @@ Currently, this repository has 2 branches: *'main' (Default)*, *'profile'*
 - Home page Structure
 - Profile page (Backend is in progress)
   
-**Navigation:**  
+### **Navigation:**  
+[Branch Structure](#branch-structure "Branch information")  
 [Download Project](#download-project "Install the project on your local")  
 [Install and Running server](#install-and-running-server "Install and running server by Docker")  
 
 
-## This is the 'main' branch
-Main branch is repository for keep up to date with the latest progress of the project. As of this writing, the project is still in development.  
+## Branch Structure
+### This is the 'main' branch
+The main branch is used as the repository for keeping track of the project's recently completed progress. As of this writing, the project is still under progress.  
+
 This branch contains 2 main folders:
 >
 >* **Frontend/**
->>   * .html
->>
->>   * .css
->>
->>   * .js
->>
->>   * .json
->>
->>   * .png (images)
->>
->>   * .gitignore  
->>
+>>   * .html **/** .css **/** .js **/** .json **/** .png (images) **/** .gitignore
+>> 
 >* **Server-Setup/**
->>   * .dockerfile (docker image for build & run on Docker)
+>>   * .dockerfile (docker image for build & run on Docker)  
 >>
 
 
@@ -50,8 +43,10 @@ or select the download option via **Code > Download Zip** and then extract the z
 ## Install and Running server
 The last two lines of the **DockerContainer_NodeJS.dockerfile** file in `server-setup` folder contain the commands used to ***build*** and ***run*** the docker image to create a NodeJS server.  
 
+> **Build**  
 >`docker build -f server-setup/DockerContainer_NodeJS.dockerfile -t node-js-image .`  
 
+> **Run**  
 >`docker run -d --name node-js --network mynetwork -p 3000:3000 node-js-image`
 
 ***Note that:*** these commands only work properly if you build the docker file in the same location as the `frontend` and `server-setup` folders, so use the code with caution.  
