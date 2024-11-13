@@ -51,9 +51,18 @@ function addToDB(user) {
 }
 
 function logout() {
-    console.log('Logging out...'); // ตรวจสอบว่าฟังก์ชันถูกเรียกใช้
-    localStorage.removeItem('user'); // ลบข้อมูลผู้ใช้ (หากมี)
-    window.location.href = 'login.html'; // เปลี่ยนเส้นทางไปยังหน้า login
+    const userConfirmed = confirm("Are you sure you want to log out?");
+            
+            // If user clicked "OK"
+         if (userConfirmed) {
+                // Clear session data (optional)
+                sessionStorage.clear();
+                localStorage.removeItem('user'); // ลบข้อมูลผู้ใช้ (หากมี)
+
+                // Redirect to the logout page
+                window.location.href = "logout.html";// เปลี่ยนเส้นทางไปยังหน้า login
+                console.log('Logging out...'); // ตรวจสอบว่าฟังก์ชันถูก
+         }
 }
 
 // ตรวจสอบการเข้าสู่ระบบเมื่อโหลดหน้า main.html
