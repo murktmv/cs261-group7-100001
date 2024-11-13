@@ -62,6 +62,13 @@ function logout() {
     }
 }
 
+// ฟังก์ชั่น logout สำหรับ session timeout logout
+function sessionTimeoutLogout() {
+    localStorage.removeItem('user'); // ลบข้อมูลผู้ใช้ (หากมี)
+    window.location.href = "login.html"; // เปลี่ยนเส้นทางไปยังหน้า login
+    console.log('Session timed out. Logging out...'); // ตรวจสอบว่าฟังก์ชันถูก
+}
+
 // ตรวจสอบการเข้าสู่ระบบเมื่อโหลดหน้า main.html
 document.addEventListener('DOMContentLoaded', () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -87,3 +94,30 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("info-box-id").innerText = user.username;
     }
 });
+
+
+// กำหนดเวลา timeout (in milliseconds). : minutes * seconds * milliseconds
+const sessionTimeout = 15 * 60 * 1000; // 15 minutes
+let timeoutId;
+
+// Function to reset the session timeout
+function resetTimeout() {
+    clearTimeout(timeoutId);
+    startTimeout();
+}
+
+// Function to start the timeout timer
+function startTimeout() {
+    timeoutId = setTimeout(() => {
+        sessionTimeoutLogout(); // หลังจาก timeout แล้วจะนำ user กลับไปหน้า login
+    }, sessionTimeout);
+}
+
+// Reset ตัวจับเวลาเมื่อมี interaction
+document.addEventListener("mousemove", resetTimeout);
+document.addEventListener("keydown", resetTimeout);
+document.addEventListener("click", resetTimeout);
+document.addEventListener("scroll", resetTimeout);
+
+// Start the session timeout countdown
+startTimeout();
